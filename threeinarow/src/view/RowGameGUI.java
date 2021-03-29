@@ -12,31 +12,34 @@ import controller.RowGameController;
 
 public class RowGameGUI implements RowGameView
 {
-    public JFrame gui = new JFrame("Three in a Row");
-    public RowGameBoardView gameBoardView;
-    public JButton reset = new JButton("Reset");
-    public RowGameStatusView gameStatusView;
-    
+    private JFrame gui = new JFrame("Three in a Row");
+    private RowGameBoardView gameBoardView;
+    private JButton reset = new JButton("Reset");
+    private RowGameStatusView gameStatusView;
     private RowGameController gameController;
+    private int rows;
+    private int cols;
 
 
     /**
      * Creates a new game initializing the GUI.
      */
-    public RowGameGUI(RowGameController gameController) {
-	this.gameController = gameController;
+    public RowGameGUI(RowGameController gameController, int rows, int cols) {
+        this.rows = rows;
+        this.cols = cols;
+	    this.gameController = gameController;
 	
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gui.setSize(new Dimension(500, 350));
+        gui.setSize(new Dimension(this.rows*50, this.cols*50));
         gui.setResizable(true);
 
-	gameBoardView = new RowGameBoardView(this.gameController);
+	    gameBoardView = new RowGameBoardView(this.gameController, this.rows, this.cols);
         JPanel gamePanel = gameBoardView.gamePanel;
 
         JPanel options = new JPanel(new FlowLayout());
         options.add(reset);
 
-	gameStatusView = new RowGameStatusView(this.gameController);
+	    gameStatusView = new RowGameStatusView(this.gameController);
         JPanel messages = gameStatusView.messages;
 
         gui.add(gamePanel, BorderLayout.NORTH);

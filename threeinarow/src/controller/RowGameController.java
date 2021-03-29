@@ -20,31 +20,33 @@ import view.RowGameGUI;
  */
 public class RowGameController {
     public static final String GAME_END_NOWINNER = "Game ends in a draw";
-
-    public RowGameModel gameModel;
-    public RowGameGUI gameView;
-
+	private RowGameModel gameModel;
+    private RowGameGUI gameView;
+	private int rows;
+	private int cols;
 
     /**
      * Creates a new game initializing the GUI.
      */
-    public RowGameController() {
-	gameModel = new RowGameModel();
-	gameView = new RowGameGUI(this);
+    public RowGameController(int rows, int cols) {		
+		this.rows = rows;
+		this.cols = cols;
+		gameModel = new RowGameModel(this.rows, this.cols);
+		gameView = new RowGameGUI(this, this.rows, this.cols);
 	
-	resetGame();
+		resetGame();
     }
 
     public RowGameModel getModel() {
-	return this.gameModel;
+		return this.gameModel;
     }
 
     public RowGameGUI getView() {
-	return this.gameView;
+		return this.gameView;
     }
 
     public void startUp() {
-	gameView.gui.setVisible(true);
+		gameView.gui.setVisible(true);
     }
 
     /**
