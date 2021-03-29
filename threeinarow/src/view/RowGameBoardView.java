@@ -69,15 +69,15 @@ public class RowGameBoardView implements RowGameView
      * @param column The column that contains the block
      */
     protected void updateBlock(RowGameModel gameModel, int row, int col) {
-        blocks[row][col].setText(gameModel.blocksData[row][col].getContents());
-        blocks[row][col].setEnabled(gameModel.blocksData[row][col].getIsLegalMove());	
+        blocks[row][col].setText(gameModel.getBlocksData()[row][col].getContents());
+        blocks[row][col].setEnabled(gameModel.getBlocksData()[row][col].getIsLegalMove());	
     }
 
-    private JButton[][] getBlocks() {
+    public JButton[][] getBlocks() {
         return this.blocks;
     }
 
-    private JPanel getGamePanel() {
+    public JPanel getGamePanel() {
         return this.gamePanel;
     }
 }

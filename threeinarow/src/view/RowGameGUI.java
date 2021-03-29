@@ -34,7 +34,7 @@ public class RowGameGUI implements RowGameView
         gui.setResizable(true);
 
 	    gameBoardView = new RowGameBoardView(this.gameController, this.rows, this.cols);
-        JPanel gamePanel = gameBoardView.gamePanel;
+        JPanel gamePanel = gameBoardView.getGamePanel();
 
         JPanel options = new JPanel(new FlowLayout());
         options.add(reset);
@@ -63,5 +63,21 @@ public class RowGameGUI implements RowGameView
 	gameBoardView.update(gameModel);
 
 	gameStatusView.update(gameModel);
+    }
+
+    public RowGameBoardView getGameBoardView() {
+        return this.gameBoardView;
+    }
+
+    public RowGameController getRowGameController() {
+        return this.gameController;
+    }
+
+    public RowGameStatusView getStatusView() {
+        return this.gameStatusView;
+    }
+
+    public JFrame getGUI(){
+        return this.gui;
     }
 }

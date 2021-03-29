@@ -24,6 +24,14 @@ public class RowGameModel
         return this.player;
     }
 
+    public void setMovesLeft(int moves) {
+        this.movesLeft = moves;
+    }
+
+    public int getMovesLeft() {
+        return this.movesLeft;
+    }
+
     public RowBlockModel[][] getBlocksData() {
         return this.blocksData;
     }
