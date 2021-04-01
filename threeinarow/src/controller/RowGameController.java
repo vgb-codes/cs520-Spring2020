@@ -24,6 +24,7 @@ public class RowGameController {
     private RowGameGUI gameView;
 	private int rows;
 	private int cols;
+	private RowGameRulesStrategy gameStrategy;
 
     /**
      * Creates a new game initializing the GUI.
@@ -33,7 +34,9 @@ public class RowGameController {
 		this.cols = cols;
 		gameModel = new RowGameModel(this.rows, this.cols);
 		gameView = new RowGameGUI(this, this.rows, this.cols);
-	
+		gameStrategy = new ThreeInARowStrategy(rows, cols);
+
+
 		resetGame();
     }
 
@@ -392,8 +395,8 @@ public class RowGameController {
      * Ends the game disallowing further player turns.
      */
     public void endGame() {
-	for(int row = 0;row<3;row++) {
-	    for(int column = 0;column<3;column++) {
+	for(int row = 0;row<this.rows;row++) {
+	    for(int column = 0;column<this.cols;column++) {
 		this.gameModel.getBlocksData()[row][column].setIsLegalMove(false);
 	    }
 	}
@@ -405,17 +408,17 @@ public class RowGameController {
      * Resets the game to be able to start playing again.
      */
     public void resetGame() {
-        for(int row = 0;row<3;row++) {
-            for(int column = 0;column<3;column++) {
-                gameModel.getBlocksData()[row][column].reset();
-		// Enable the bottom row
-	        gameModel.getBlocksData()[row][column].setIsLegalMove(row == 2);
-            }
-        }
-	gameModel.setPlayer("1");
-	gameModel.setMovesLeft(9);
-	gameModel.setFinalResult(null);
-
-	gameView.update(gameModel);
+        // for(int row = 0;row<this.rows;row++) {
+        //     for(int column = 0;column<this.cols;column++) {
+        //         gameModel.getBlocksData()[row][column].reset();
+		// // Enable the bottom row
+	    //     gameModel.getBlocksData()[row][column].setIsLegalMove(row == 2);
+        //     }
+        // }
+		// gameModel.setPlayer("1");
+		// gameModel.setMovesLeft(this.rows*this.cols);
+		// gameModel.setFinalResult(null);
+		gameStrategy.reset(gameModel);
+		gameView.update(gameModel);
     }
 }
