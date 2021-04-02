@@ -32,14 +32,20 @@ public class RowGameController {
     /**
      * Creates a new game initializing the GUI.
      */
-    public RowGameController(int rows, int cols) {		
+    public RowGameController(int rows, int cols, String strategy) throws IllegalArgumentException {		
 		this.rows = rows;
 		this.cols = cols;
 		gameModel = new RowGameModel(this.rows, this.cols);
 		gameView = new RowGameGUI(this, this.rows, this.cols);
-		gameStrategy = new TicTacToeStrategy(rows, cols);
 
-
+		if (strategy.equals("ThreeInARow")){
+			gameStrategy = new ThreeInARowStrategy(rows, cols);
+		} else if(strategy.equals("TicTacToe")) {
+			gameStrategy = new TicTacToeStrategy(rows, cols);
+		} else {
+			throw new IllegalArgumentException("Strategy choice can only be 'ThreeInARow' or 'TicTacToe'");
+		}
+		
 		resetGame();
     }
 
