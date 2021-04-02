@@ -10,6 +10,27 @@ public class ThreeInARowStrategy implements RowGameRulesStrategy {
         this.rows = rows;
         this.cols = cols;
     }
+
+    @Override
+    public void move(RowGameModel gameModel, int row, int col) {
+        gameModel.setMovesLeft(gameModel.getMovesLeft() - 1);
+        String currentPlayer = gameModel.getPlayer();
+
+        if(gameModel.getBlocksData()[row][col].getIsLegalMove()) {
+            if (currentPlayer.equals("1")) {
+                gameModel.getBlocksData()[row][col].setContents("X");
+                gameModel.setPlayer("2");
+                gameModel.getBlocksData()[row][col].setIsLegalMove(false);
+            } else {
+                gameModel.getBlocksData()[row][col].setContents("0");
+                gameModel.setPlayer("1");
+                gameModel.getBlocksData()[row][col].setIsLegalMove(false);
+            }
+            if (row > 0) {
+                gameModel.getBlocksData()[row-1][col].setIsLegalMove(true);
+            }
+        }
+    }
     
     @Override
     public void reset(RowGameModel gameModel) {

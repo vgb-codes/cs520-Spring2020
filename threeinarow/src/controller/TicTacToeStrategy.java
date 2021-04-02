@@ -12,6 +12,24 @@ public class TicTacToeStrategy implements RowGameRulesStrategy {
     }
 
     @Override
+    public void move(RowGameModel gameModel, int row, int col) {
+        gameModel.setMovesLeft(gameModel.getMovesLeft() - 1);
+        String currentPlayer = gameModel.getPlayer();
+
+        if(gameModel.getBlocksData()[row][col].getIsLegalMove()) {
+            if (currentPlayer.equals("1")) {
+                gameModel.getBlocksData()[row][col].setContents("X");
+                gameModel.setPlayer("2");
+                gameModel.getBlocksData()[row][col].setIsLegalMove(false);
+            } else {
+                gameModel.getBlocksData()[row][col].setContents("0");
+                gameModel.setPlayer("1");
+                gameModel.getBlocksData()[row][col].setIsLegalMove(false);
+            }
+        }
+    }
+
+    @Override
     public void reset(RowGameModel gameModel) {
         for (int row=0; row<this.rows; row++) {
             for (int col=0; col<this.cols; col++) {
