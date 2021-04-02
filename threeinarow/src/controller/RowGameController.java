@@ -19,7 +19,10 @@ import view.RowGameGUI;
  * extensibility, and testability.
  */
 public class RowGameController {
-    public static final String GAME_END_NOWINNER = "Game ends in a draw";
+    private static final String GAME_END_NOWINNER = "Game ends in a draw";
+	private static final String GAME_END_PLAYER_ONE = "Player 1 Wins!";
+	private static final String GAME_END_PLAYER_TWO = "Player 2 Wins!";
+	
 	private RowGameModel gameModel;
     private RowGameGUI gameView;
 	private int rows;
@@ -59,14 +62,20 @@ public class RowGameController {
      */
     public void move(JButton block) {
 		JButton[][] buttonBlocks = gameView.getGameBoardView().getBlocks();
+
 		for (int row=0; row<this.rows; row++) {
 			for (int col=0; col<this.cols; col++) {
 				if (buttonBlocks[row][col] == block) {
 					gameStrategy.move(gameModel, row, col);
+					
+					if (gameStrategy.isTie(gameModel)) {
+						gameModel.setFinalResult(GAME_END_NOWINNER);
+					}
 				}
 			}
 		}
 		gameView.update(gameModel);
+	}
 	// gameModel.setMovesLeft(gameModel.getMovesLeft() - 1);
 
 	// String player = gameModel.getPlayer();
@@ -396,7 +405,7 @@ public class RowGameController {
 	// 	}
 	//     }
 	// }	
-    }
+    
 
     /**
      * Ends the game disallowing further player turns.

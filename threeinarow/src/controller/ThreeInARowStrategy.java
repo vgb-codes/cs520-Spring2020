@@ -1,5 +1,6 @@
 package controller;
 import model.RowGameModel;
+import model.RowBlockModel;
 
 public class ThreeInARowStrategy implements RowGameRulesStrategy {
     
@@ -14,20 +15,22 @@ public class ThreeInARowStrategy implements RowGameRulesStrategy {
     @Override
     public void move(RowGameModel gameModel, int row, int col) {
         gameModel.setMovesLeft(gameModel.getMovesLeft() - 1);
+        System.out.println("Moves Left: "+gameModel.getMovesLeft());
         String currentPlayer = gameModel.getPlayer();
+        RowBlockModel[][] blocksData = gameModel.getBlocksData();
 
-        if(gameModel.getBlocksData()[row][col].getIsLegalMove()) {
+        if(blocksData[row][col].getIsLegalMove()) {
             if (currentPlayer.equals("1")) {
-                gameModel.getBlocksData()[row][col].setContents("X");
+                blocksData[row][col].setContents("X");
                 gameModel.setPlayer("2");
-                gameModel.getBlocksData()[row][col].setIsLegalMove(false);
+                blocksData[row][col].setIsLegalMove(false);
             } else {
-                gameModel.getBlocksData()[row][col].setContents("0");
+                blocksData[row][col].setContents("0");
                 gameModel.setPlayer("1");
-                gameModel.getBlocksData()[row][col].setIsLegalMove(false);
+                blocksData[row][col].setIsLegalMove(false);
             }
             if (row > 0) {
-                gameModel.getBlocksData()[row-1][col].setIsLegalMove(true);
+                blocksData[row-1][col].setIsLegalMove(true);
             }
         }
     }
@@ -45,4 +48,9 @@ public class ThreeInARowStrategy implements RowGameRulesStrategy {
         gameModel.setFinalResult(null);
     }
 
+    @Override
+    public boolean isTie(RowGameModel gameModel) {
+        boolean tie = gameModel.getMovesLeft() == 0 ? true : false;
+        return tie;
+    }
 }

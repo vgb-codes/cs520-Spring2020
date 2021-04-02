@@ -15,25 +15,28 @@ public class RowGameStatusView implements RowGameView
     public JTextArea playerturn = new JTextArea();
     public JPanel messages = new JPanel(new FlowLayout());
 
+	private static final String PLAY_PLAYER_ONE = "Player 1 to play 'X'";
+	private static final String PLAY_PLAYER_TWO = "Player 2 to play 'O'";
+
     
     public RowGameStatusView(RowGameController gameController) {
-	super();
+		super();
 
-	messages.setBackground(Color.white);
-	messages.add(playerturn);
+		messages.setBackground(Color.white);
+		messages.add(playerturn);
     }
 
     public void update(RowGameModel gameModel) {
-	if (gameModel.getFinalResult() == null) {
-	    if (gameModel.getPlayer().equals("1")) {
-			playerturn.setText("Player 1 to play 'X'");
-	    }
-	    else {
-			playerturn.setText("Player 2 to play 'O'");
-	    }
-	}
-	else {
-	    	playerturn.setText(gameModel.getFinalResult());
-	}	
+		if (gameModel.getFinalResult() == null) {
+			if (gameModel.getPlayer().equals("1")) {
+				playerturn.setText(PLAY_PLAYER_ONE);
+			}
+			else {
+				playerturn.setText(PLAY_PLAYER_TWO);
+			}
+		}
+		else {
+				playerturn.setText(gameModel.getFinalResult());
+		}	
     }
 }
