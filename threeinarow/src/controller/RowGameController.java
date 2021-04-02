@@ -34,7 +34,7 @@ public class RowGameController {
 		this.cols = cols;
 		gameModel = new RowGameModel(this.rows, this.cols);
 		gameView = new RowGameGUI(this, this.rows, this.cols);
-		gameStrategy = new ThreeInARowStrategy(rows, cols);
+		gameStrategy = new TicTacToeStrategy(rows, cols);
 
 
 		resetGame();
