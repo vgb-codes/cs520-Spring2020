@@ -9,7 +9,7 @@ public interface RowGameRulesStrategy
 
     public void move(RowGameModel gameModel, int row, int col);
 
-    //public boolean isWin(RowGameModel gameModel);
+    public boolean isWin(RowGameModel gameModel, int row, int col);
 
     public boolean isTie(RowGameModel gameModel);
 }

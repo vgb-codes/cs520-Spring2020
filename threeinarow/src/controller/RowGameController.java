@@ -22,7 +22,7 @@ public class RowGameController {
     private static final String GAME_END_NOWINNER = "Game ends in a draw";
 	private static final String GAME_END_PLAYER_ONE = "Player 1 Wins!";
 	private static final String GAME_END_PLAYER_TWO = "Player 2 Wins!";
-	
+
 	private RowGameModel gameModel;
     private RowGameGUI gameView;
 	private int rows;
@@ -67,9 +67,21 @@ public class RowGameController {
 			for (int col=0; col<this.cols; col++) {
 				if (buttonBlocks[row][col] == block) {
 					gameStrategy.move(gameModel, row, col);
-					
-					if (gameStrategy.isTie(gameModel)) {
+
+					if (gameStrategy.isWin(gameModel, row, col)) {
+						System.out.println("Win Condition satified at row "+row+" and column "+col);
+
+						if (gameModel.getBlocksData()[row][col].getContents().equals("X")) {
+							gameModel.setFinalResult(GAME_END_PLAYER_ONE);
+							endGame();
+						} else {
+							gameModel.setFinalResult(GAME_END_PLAYER_TWO);
+							endGame();
+						}
+
+					} else if (gameStrategy.isTie(gameModel)) {
 						gameModel.setFinalResult(GAME_END_NOWINNER);
+						endGame();
 					}
 				}
 			}
