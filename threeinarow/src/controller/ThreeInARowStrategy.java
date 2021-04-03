@@ -2,6 +2,10 @@ package controller;
 import model.RowGameModel;
 import model.RowBlockModel;
 
+/**
+* Implementation of Three In A Row game using Strategy Pattern.
+ */
+
 public class ThreeInARowStrategy implements RowGameRulesStrategy {
     
     private int rows;
@@ -91,7 +95,7 @@ public class ThreeInARowStrategy implements RowGameRulesStrategy {
     }
 
     /**
-    * Checks if there is tie once all moves are used up.
+    * Checks if there is tie. Method should be invoked after checking for win condition.
     * @param gameModel RowGameModel object that is affected.
      */
     @Override

@@ -2,6 +2,11 @@ package controller;
 import model.RowGameModel;
 import model.RowBlockModel;
 
+/**
+* Implementation of Tic Tac Toe game using Strategy Pattern.
+ */
+
+
 public class TicTacToeStrategy implements RowGameRulesStrategy {
 
     private int rows;

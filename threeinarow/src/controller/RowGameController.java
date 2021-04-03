@@ -13,10 +13,7 @@ import view.RowGameGUI;
 
 /**
  * Java implementation of the 3 in a row game, using the Swing framework.
- *
- * This quick-and-dirty implementation violates a number of software engineering
- * principles and needs a thorough overhaul to improve readability,
- * extensibility, and testability.
+* This version has been improved by inclusion of modularity, encapsulation, documentation, and extension to row*columns gameboard. Additionally, this package demonstrates the application of Strategy Pattern.
  */
 public class RowGameController {
     private static final String GAME_END_NOWINNER = "Game ends in a draw";
@@ -39,7 +36,7 @@ public class RowGameController {
      */
     public RowGameController(int rows, int cols, String strategy) throws IllegalArgumentException {	
 
-		if (rows!= cols || rows <=3 || cols <=3) {
+		if (rows!= cols || rows <3 || cols <3) {
 			throw new IllegalArgumentException("ARGUMENT ERROR: Rows must be equal to Columns and they must not be less than or equal to 3.");
 		}
 
