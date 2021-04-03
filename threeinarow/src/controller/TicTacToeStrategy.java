@@ -45,7 +45,9 @@ public class TicTacToeStrategy implements RowGameRulesStrategy {
                 gameModel.setPlayer("1");
                 blocksData[row][col].setIsLegalMove(false);
             }
+            gameModel.stateChanged();
         }
+
     }
 
     /**
@@ -75,7 +77,7 @@ public class TicTacToeStrategy implements RowGameRulesStrategy {
     public boolean isWin(RowGameModel gameModel, int row, int col) {
         // Horizontal win conditions
         if (checkPattern(gameModel, row, col, row, col-1, row, col-2)) return true;
-        if (checkPattern(gameModel, row, col, row, col+1, row, col+1)) return true;
+        if (checkPattern(gameModel, row, col, row, col+1, row, col+2)) return true;
         if (checkPattern(gameModel, row, col, row, col-1, row, col+1)) return true;
         // Vertical win conditions
         if (checkPattern(gameModel, row, col, row-1, col, row-2, col)) return true;

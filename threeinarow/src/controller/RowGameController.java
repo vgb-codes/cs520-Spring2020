@@ -11,6 +11,7 @@ import model.RowGameModel;
 import view.RowGameGUI;
 
 
+
 /**
  * Java implementation of the 3 in a row game, using the Swing framework.
 * This version has been improved by inclusion of modularity, encapsulation, documentation, and extension to row*columns gameboard. Additionally, this package demonstrates the application of Strategy Pattern.
@@ -43,7 +44,7 @@ public class RowGameController {
 		this.rows = rows;
 		this.cols = cols;
 		gameModel = new RowGameModel(this.rows, this.cols);
-		gameView = new RowGameGUI(this, this.rows, this.cols);
+		gameView = new RowGameGUI(this, gameModel, this.rows, this.cols);
 
 		if (strategy.equals("ThreeInARow")){
 			gameStrategy = new ThreeInARowStrategy(rows, cols);
@@ -108,7 +109,8 @@ public class RowGameController {
 				}
 			}
 		}
-		gameView.update(gameModel);
+		// No longer used due to observer pattern being applied
+		//gameView.update(gameModel);
 	}
 	
 
@@ -118,11 +120,12 @@ public class RowGameController {
     public void endGame() {
 		for(int row = 0;row<this.rows;row++) {
 			for(int column = 0;column<this.cols;column++) {
-			this.gameModel.getBlocksData()[row][column].setIsLegalMove(false);
+				gameModel.getBlocksData()[row][column].setIsLegalMove(false);
+				gameModel.stateChanged();
 			}
 		}
-
-		gameView.update(gameModel);
+		// No longer used due to observer pattern being applied
+		//gameView.update(gameModel);
     }
 
     /**
@@ -131,6 +134,8 @@ public class RowGameController {
     public void resetGame() {
 
 		gameStrategy.reset(gameModel);
-		gameView.update(gameModel);
+		gameModel.stateChanged();
+		// No longer used due to observer pattern being applied
+		//gameView.update(gameModel);
     }
 }

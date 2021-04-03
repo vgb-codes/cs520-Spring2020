@@ -17,6 +17,7 @@ public class RowGameGUI implements RowGameView
     private JButton reset = new JButton("Reset");
     private RowGameStatusView gameStatusView;
     private RowGameController gameController;
+    private RowGameModel gameModel;
     private int rows;
     private int cols;
 
@@ -24,10 +25,12 @@ public class RowGameGUI implements RowGameView
     /**
      * Creates a new game initializing the GUI.
      */
-    public RowGameGUI(RowGameController gameController, int rows, int cols) {
+    public RowGameGUI(RowGameController gameController, RowGameModel gameModel, int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
 	    this.gameController = gameController;
+        this.gameModel = gameModel;
+        this.gameModel.addObserver(this);
 	
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setSize(new Dimension(this.rows*50, this.cols*50));
@@ -60,9 +63,8 @@ public class RowGameGUI implements RowGameView
      * @param gameModel The current game model
      */
     public void update(RowGameModel gameModel) {
-	gameBoardView.update(gameModel);
-
-	gameStatusView.update(gameModel);
+        gameBoardView.update(gameModel);
+        gameStatusView.update(gameModel);
     }
 
     public RowGameBoardView getGameBoardView() {

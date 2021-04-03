@@ -37,8 +37,8 @@ public class ThreeInARowStrategy implements RowGameRulesStrategy {
         if(blocksData[row][col].getIsLegalMove()) {
             if (currentPlayer.equals("1")) {
                 blocksData[row][col].setContents("X");
-                gameModel.setPlayer("2");
                 blocksData[row][col].setIsLegalMove(false);
+                gameModel.setPlayer("2");
             } else {
                 blocksData[row][col].setContents("0");
                 gameModel.setPlayer("1");
@@ -47,7 +47,9 @@ public class ThreeInARowStrategy implements RowGameRulesStrategy {
             if (row > 0) {
                 blocksData[row-1][col].setIsLegalMove(true);
             }
+            gameModel.stateChanged();
         }
+        
     }
     
     /**
@@ -77,7 +79,7 @@ public class ThreeInARowStrategy implements RowGameRulesStrategy {
     public boolean isWin(RowGameModel gameModel, int row, int col) {
         // Horizontal win conditions
         if (checkPattern(gameModel, row, col, row, col-1, row, col-2)) return true;
-        if (checkPattern(gameModel, row, col, row, col+1, row, col+1)) return true;
+        if (checkPattern(gameModel, row, col, row, col+1, row, col+2)) return true;
         if (checkPattern(gameModel, row, col, row, col-1, row, col+1)) return true;
         // Vertical win conditions
         if (checkPattern(gameModel, row, col, row-1, col, row-2, col)) return true;

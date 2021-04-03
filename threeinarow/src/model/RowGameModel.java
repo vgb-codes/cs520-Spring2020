@@ -1,4 +1,7 @@
 package model;
+import java.util.List;
+import java.util.ArrayList;
+import view.RowGameGUI;
 
 /**
 * The RowGameModel class represents the game board.
@@ -6,6 +9,22 @@ package model;
 public class RowGameModel 
 {
     public static final String GAME_END_NOWINNER = "Game ends in a draw";
+
+    private List<RowGameGUI> observers = new ArrayList<RowGameGUI>();
+
+    public void addObserver(RowGameGUI gameView) {
+        observers.add(gameView);
+    }
+
+    public void notifyObservers() {
+        for (RowGameGUI observer: observers) {
+            observer.update(this);
+        }
+    }
+
+    public void stateChanged() {
+        notifyObservers();
+    }
 
     private RowBlockModel[][] blocksData;
 
@@ -24,6 +43,7 @@ public class RowGameModel
      */
     public void setPlayer(String player) {
         this.player = player;
+        notifyObservers();
     }
 
     /**
@@ -39,6 +59,7 @@ public class RowGameModel
      */
     public void setMovesLeft(int moves) {
         this.movesLeft = moves;
+        notifyObservers();
     }
 
     /**
@@ -87,5 +108,6 @@ public class RowGameModel
      */
     public void setFinalResult(String finalResult) {
 	    this.finalResult = finalResult;
+        notifyObservers();
     }
 }
