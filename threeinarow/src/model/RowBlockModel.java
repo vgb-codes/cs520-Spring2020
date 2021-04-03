@@ -38,6 +38,9 @@ public class RowBlockModel
         this.reset();
     }
 
+    /**
+    * Getter method for RowGameModel object.
+     */
     public RowGameModel getGame() {
 	    return this.game;
     }
@@ -64,10 +67,17 @@ public class RowBlockModel
 	    return this.contents;
     }
 
+    /**
+    * Setter method for isLegalMove. 
+    * @param isLegalMove Boolean value to be set.
+     */
     public void setIsLegalMove(boolean isLegalMove) {
 	    this.isLegalMove = isLegalMove;
     }
 
+    /**
+    * Getter method for isLegalMove.
+     */
     public boolean getIsLegalMove() {
 	    return this.isLegalMove;
     }
