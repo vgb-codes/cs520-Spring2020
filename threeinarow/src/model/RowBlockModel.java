@@ -40,6 +40,7 @@ public class RowBlockModel
 
     /**
     * Getter method for RowGameModel object.
+    * @return RowGameModel object.
      */
     public RowGameModel getGame() {
 	    return this.game;
@@ -77,6 +78,7 @@ public class RowBlockModel
 
     /**
     * Getter method for isLegalMove.
+    * @return boolean value of isLegalMove.
      */
     public boolean getIsLegalMove() {
 	    return this.isLegalMove;

@@ -9,7 +9,14 @@ import model.RowBlockModel;
 
 public class TicTacToeStrategy implements RowGameRulesStrategy {
 
+    /**
+    * Number of rows in gameboard.
+     */
     private int rows;
+
+    /**
+    * Number of columns in gameboard.
+     */    
     private int cols;
 
     /**
@@ -72,6 +79,7 @@ public class TicTacToeStrategy implements RowGameRulesStrategy {
     * @param gameModel RowGameModel object that is affected.
     * @param row Row of element to check for win condition.
     * @param col Column of element to check for win condition.
+    * @return true or false depending on whether win condition is satified.
      */
     @Override
     public boolean isWin(RowGameModel gameModel, int row, int col) {
@@ -97,6 +105,7 @@ public class TicTacToeStrategy implements RowGameRulesStrategy {
     /**
     * Checks if there is tie. Method should be invoked after checking for win condition.
     * @param gameModel RowGameModel object that is affected.
+    * @return true or false depending on whether gameboard has reached tie status.
      */
     @Override
     public boolean isTie(RowGameModel gameModel) {
@@ -113,6 +122,7 @@ public class TicTacToeStrategy implements RowGameRulesStrategy {
     * @param y2 y (column) coordinate of second point.
     * @param x3 x (row) coordinate of third point.
     * @param y3 y (column) coordinate of third point.
+    * @return true or false depending on whether the contents of the three points match.
      */
     public boolean checkPattern(RowGameModel gameModel, int x1, int y1, int x2, int y2, int x3, int y3) {
 

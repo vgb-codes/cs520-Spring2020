@@ -2,6 +2,9 @@ package controller;
 
 import model.RowGameModel;
 
+/**
+* RowGameRulesStrategy interface. Used for the implementation of Strategy Pattern.
+ */
 
 public interface RowGameRulesStrategy
 {
@@ -24,12 +27,14 @@ public interface RowGameRulesStrategy
     * @param gameModel RowGameModel object that is affected.
     * @param row Row of element to check for win condition.
     * @param col Column of element to check for win condition.
+    * @return true or false depending on whether win condition is satified.
      */
     public boolean isWin(RowGameModel gameModel, int row, int col);
 
     /**
     * Checks if there is tie. Method should be invoked after checking for win condition.
     * @param gameModel RowGameModel object that is affected.
+    * @return true or false depending on whether gameboard has reached tie status.
      */
     public boolean isTie(RowGameModel gameModel);
 }

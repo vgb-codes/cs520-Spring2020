@@ -9,27 +9,66 @@ import java.awt.event.*;
 import model.RowGameModel;
 import controller.RowGameController;
 
+/**
+* RowGameGUI class that depicts the gameboard. This class acts as the observer to the subject/observable RowGameModel.
+ */
 
 public class RowGameGUI implements RowGameView
 {
-    private JFrame gui = new JFrame("Three in a Row");
+    /**
+    * JFrame object for GUI.
+     */
+    private JFrame gui = new JFrame("Three in a Row/Tic Tac Toe Game");
+
+    /**
+    * RowGameBoardView object.
+     */
     private RowGameBoardView gameBoardView;
+
+    /**
+    * JButton that resets the board.
+     */
     private JButton reset = new JButton("Reset");
+
+    /**
+    * RowGameStatusView object.
+     */
     private RowGameStatusView gameStatusView;
+
+    /**
+    * RowGameController object.
+     */
     private RowGameController gameController;
+
+    /**
+    * RowGameModel object.
+     */
     private RowGameModel gameModel;
+
+    /**
+    * Number of rows in gameboard.
+     */
     private int rows;
+
+    /**
+    * Number of columns in gameboard.
+     */
     private int cols;
 
 
     /**
      * Creates a new game initializing the GUI.
+     * @param gameController RowGameController object.
+     * @param gameModel RowGameModel object.
+     * @param rows Integer value for number of rows.
+     * @param cols Integer value for number of columns.
      */
     public RowGameGUI(RowGameController gameController, RowGameModel gameModel, int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
 	    this.gameController = gameController;
         this.gameModel = gameModel;
+        // Register this object as observer.
         this.gameModel.addObserver(this);
 	
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,18 +106,34 @@ public class RowGameGUI implements RowGameView
         gameStatusView.update(gameModel);
     }
 
+    /**
+    * Getter method for RowGameBoardView object.
+    * @return RowGameBoardView object.
+     */
     public RowGameBoardView getGameBoardView() {
         return this.gameBoardView;
     }
 
+    /**
+    * Getter method for RowGameController object.
+    * @return RowGameController object.
+     */
     public RowGameController getRowGameController() {
         return this.gameController;
     }
 
+    /**
+    * Getter method for RowGameStatusView object.
+    * @return RowGameStatusView object.
+     */
     public RowGameStatusView getStatusView() {
         return this.gameStatusView;
     }
 
+    /**
+    * Getter method for JFrame object.
+    * @return JFrame object.
+     */
     public JFrame getGUI(){
         return this.gui;
     }

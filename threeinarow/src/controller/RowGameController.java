@@ -17,14 +17,44 @@ import view.RowGameGUI;
 * This version has been improved by inclusion of modularity, encapsulation, documentation, and extension to row*columns gameboard. Additionally, this package demonstrates the application of Strategy Pattern.
  */
 public class RowGameController {
+	/**
+	* Tie messsage.
+	 */
     private static final String GAME_END_NOWINNER = "Game ends in a draw";
+
+	/**
+	* Player 1 win message.
+	 */
 	private static final String GAME_END_PLAYER_ONE = "Player 1 Wins!";
+
+	/**
+	* Player 2 win message.
+	 */
 	private static final String GAME_END_PLAYER_TWO = "Player 2 Wins!";
 
+	/**
+	* RowGameModel object.
+	 */
 	private RowGameModel gameModel;
+
+	/**
+	* RowGameGUI object.
+	 */
     private RowGameGUI gameView;
+
+	/**
+	* Number of rows in gameboard.
+	 */
 	private int rows;
+
+	/**
+	* Number of columns in gameboard.
+	 */
 	private int cols;
+
+	/**
+	* RowGameRulesStrategy object.
+	 */
 	private RowGameRulesStrategy gameStrategy;
 
     /**
@@ -59,6 +89,7 @@ public class RowGameController {
 
 	/**
 	* Getter method for RowGameModel object
+	* @return RowGameModel object.
 	 */
     public RowGameModel getModel() {
 		return this.gameModel;
@@ -66,6 +97,7 @@ public class RowGameController {
 
 	/**
 	* Getter method for RowGameGUI object
+	* @return RowGameGUI object.
 	 */
     public RowGameGUI getView() {
 		return this.gameView;

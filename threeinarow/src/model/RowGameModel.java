@@ -83,6 +83,7 @@ public class RowGameModel
 
     /**
     * Getter method for player.
+    * @return Player string.
      */
     public String getPlayer() {
         return this.player;
@@ -99,6 +100,7 @@ public class RowGameModel
 
     /**
     * Getter method for movesLeft.
+    * @return Integer value of moves left.
      */
     public int getMovesLeft() {
         return this.movesLeft;
@@ -106,6 +108,7 @@ public class RowGameModel
 
     /**
     * Getter method for blocksData
+    * @return 2D array of RowBlockModel objects.
      */
     public RowBlockModel[][] getBlocksData() {
         return this.blocksData;
@@ -132,6 +135,7 @@ public class RowGameModel
 
     /**
     * Getter method for finalResult.
+    * @return Final result string.
      */
     public String getFinalResult() {
 	    return this.finalResult;

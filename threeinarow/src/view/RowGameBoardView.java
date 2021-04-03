@@ -14,15 +14,40 @@ import javax.swing.JPanel;
 import controller.RowGameController;
 import model.RowGameModel;
 
+/**
+GUI component that displays game board.
+ */
 
 public class RowGameBoardView implements RowGameView
 {
+
+    /**
+    * 2D array of JButtons.
+     */
     private JButton[][] blocks;
+
+    /**
+    * JPanel object.
+     */
     private JPanel gamePanel = new JPanel(new FlowLayout());
+    
+    /**
+    * Number of rows in gameboard.
+     */
     private int rows;
+
+    /**
+    * Number of columns in gameboard.
+     */
     private int cols;
 
     
+    /**
+    * Constructor method for RowGameBoardView.
+    * @param gameController RowGameController object.
+    * @param rows Integer value for number of rows.
+    * @param cols Integer value for number of columns.
+     */
     public RowGameBoardView(RowGameController gameController, int rows, int cols) {
 	    super();
         this.rows = rows;
@@ -65,17 +90,25 @@ public class RowGameBoardView implements RowGameView
      *
      * @param gameModel The game model
      * @param row The row that contains the block
-     * @param column The column that contains the block
+     * @param col The column that contains the block
      */
     protected void updateBlock(RowGameModel gameModel, int row, int col) {
         blocks[row][col].setText(gameModel.getBlocksData()[row][col].getContents());
         blocks[row][col].setEnabled(gameModel.getBlocksData()[row][col].getIsLegalMove());	
     }
 
+    /**
+    * Getter method for 2D array of JButtons.
+    * @return JButton[][] blocks.
+     */
     public JButton[][] getBlocks() {
         return this.blocks;
     }
 
+    /**
+    * Getter method of JPanel object.
+    * @return Game panel object.
+     */
     public JPanel getGamePanel() {
         return this.gamePanel;
     }

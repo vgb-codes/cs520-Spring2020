@@ -1,10 +1,14 @@
 import controller.RowGameController;
 
+/**
+Main class. Starts up the game.
+ */
 
 public class RowGameApp 
 {
     /**                                                                        
      * Starts a new game in the GUI.
+     * @param args Command line arguments. Argument 1 is the number of rows (Integer). Argument 2 is the number of columns (Integer). Argument 3 is strategy to be used (String).
      */
     public static void main(String[] args) throws IllegalArgumentException, NumberFormatException{
         if (args.length < 3 || args.length > 3) {
