@@ -52,11 +52,11 @@ public class RowGameBoardView implements RowGameView
      * @param gameModel The current game model
      */
     public void update(RowGameModel gameModel) {
-	for (int row = 0; row < this.rows; row++) {
-	    for (int column = 0; column < this.cols; column++) {
-		    this.updateBlock(gameModel, row, column);
-	    } // end for col
-	} // end for row	
+        for (int row = 0; row < this.rows; row++) {
+            for (int column = 0; column < this.cols; column++) {
+                this.updateBlock(gameModel, row, column);
+            } // end for col
+        } // end for row	
     }
 
     /**

@@ -3,7 +3,7 @@ import controller.RowGameController;
 
 public class RowGameApp 
 {
-    /**                                                                             
+    /**                                                                        
      * Starts a new game in the GUI.
      */
     public static void main(String[] args) throws IllegalArgumentException, NumberFormatException{
@@ -15,8 +15,8 @@ public class RowGameApp
                 int cols = Integer.parseInt(args[1]);
                 String strategy = args[2];
 
-                if (rows!=cols || rows<=0 || cols<=0) {
-                    throw new IllegalArgumentException("ARGUMENT ERROR: Rows must be equal to Columns and they must not be less than or equal to 0.");
+                if (rows!=cols || rows<=3 || cols<=3) {
+                    throw new IllegalArgumentException("ARGUMENT ERROR: Rows must be equal to Columns and they must not be less than or equal to 3.");
                 }
 
                 RowGameController game = new RowGameController(rows, cols, strategy);
