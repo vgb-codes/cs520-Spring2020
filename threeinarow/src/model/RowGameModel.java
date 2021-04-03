@@ -4,37 +4,72 @@ import java.util.ArrayList;
 import view.RowGameGUI;
 
 /**
-* The RowGameModel class represents the game board.
+* The RowGameModel class represents the game board. This class fulfills the role of a subject/observable.
  */
 public class RowGameModel 
 {
+    /**
+    * Tie status message.
+     */
     public static final String GAME_END_NOWINNER = "Game ends in a draw";
 
+    /**
+    * List of observers.
+     */
     private List<RowGameGUI> observers = new ArrayList<RowGameGUI>();
 
+    /**
+    * Add an observer to the list of observers
+    * @param gameView RowGameGUI object that will be registered as observer.
+     */
     public void addObserver(RowGameGUI gameView) {
         observers.add(gameView);
     }
 
+    /**
+    * Method that will notify all observers to update.
+     */
     public void notifyObservers() {
         for (RowGameGUI observer: observers) {
             observer.update(this);
         }
     }
 
+    /**
+    * Method that will invoke notifyObservers in case of state change.
+     */
     public void stateChanged() {
         notifyObservers();
     }
 
+    /**
+    * 2D array of RowBlockModel objects.
+     */
     private RowBlockModel[][] blocksData;
 
     /**
      * The current player taking their turn
      */
     private String player = "1";
+
+    /**
+    * Moves left in the game.
+     */
     private int movesLeft = 9;
+
+    /**
+    * Final result string.
+     */
     private String finalResult = null;
+
+    /**
+    * Number of rows in gameboard.
+     */
     private int rows;
+    
+    /**
+    * Number of columns in gameboard.
+     */
     private int cols;
 
     /**
