@@ -37,7 +37,6 @@ public class ThreeInARowStrategy implements RowGameRulesStrategy {
     @Override
     public void move(RowGameModel gameModel, int row, int col) {
         gameModel.setMovesLeft(gameModel.getMovesLeft() - 1);
-        System.out.println("Moves Left: "+gameModel.getMovesLeft());
         String currentPlayer = gameModel.getPlayer();
         RowBlockModel[][] blocksData = gameModel.getBlocksData();
 

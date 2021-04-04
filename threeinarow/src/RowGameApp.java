@@ -19,8 +19,8 @@ public class RowGameApp
                 int cols = Integer.parseInt(args[1]);
                 String strategy = args[2];
 
-                if (rows!=cols || rows<3 || cols<3) {
-                    throw new IllegalArgumentException("ARGUMENT ERROR: Rows must be equal to Columns and they must not be less than or equal to 3.");
+                if (rows<3 || cols<3) {
+                    throw new IllegalArgumentException("ARGUMENT ERROR: Rows and Columns must not be less than 3.");
                 }
 
                 RowGameController game = new RowGameController(rows, cols, strategy);

@@ -67,8 +67,8 @@ public class RowGameController {
      */
     public RowGameController(int rows, int cols, String strategy) throws IllegalArgumentException {	
 
-		if (rows!= cols || rows <3 || cols <3) {
-			throw new IllegalArgumentException("ARGUMENT ERROR: Rows must be equal to Columns and they must not be less than or equal to 3.");
+		if (rows <3 || cols <3) {
+			throw new IllegalArgumentException("ARGUMENT ERROR: Rows and Columns must not be less than 3.");
 		}
 
 		this.rows = rows;
@@ -86,6 +86,14 @@ public class RowGameController {
 		
 		resetGame();
     }
+
+	/**
+	* Getter method for RowGameRulesStrategy object
+	* @return RowGameRulesStrategy object
+	 */
+	 public RowGameRulesStrategy getGameStrategy() {
+		 return this.gameStrategy;
+	 }
 
 	/**
 	* Getter method for RowGameModel object
